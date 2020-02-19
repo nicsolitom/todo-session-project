@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.pluralize(null);
 
-const todoSchema = new.mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   title: {
     type: String,
     trim: true,
