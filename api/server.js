@@ -32,5 +32,11 @@ api.use((req, res, next) => {
   next();
 });
 
+//? Routes:
+api.get('/', (req, res, next) => {
+    console.log(`Home route called`);
+    res.send(`Home`)
+})
+
 const port = 3000;
 api.listen(port, () => console.log(`Listening on port ${port}`));

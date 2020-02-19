@@ -15,6 +15,11 @@ const todoSchema = new mongoose.Schema({
   status: {
     type: Boolean,
     required: true
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'UsersList',
+    required: true
   }
 });
 
