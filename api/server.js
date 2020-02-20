@@ -17,7 +17,7 @@ mongoose
   })
   .then(() => console.log('MongoDb Atlas connected'));
 
-//? ALLOW CROSS ORIGIN ACCESS FROM FRONTEND
+//? Allow cross origin access from frontend:
 api.use((req, res, next) => {
   res.set('ACCESS-CONTROL-ALLOW-ORIGIN', 'http://localhost:5000');
   res.set('ACCESS-CONTROL-ALLOW-CREDENTIALS', 'true');
