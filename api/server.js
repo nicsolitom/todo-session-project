@@ -34,9 +34,50 @@ api.use((req, res, next) => {
 
 //? Routes:
 api.get('/', (req, res, next) => {
-    console.log(`Home route called`);
-    res.send(`Home`)
-})
+  console.log(`Home route called`);
+  res.send(`Home`);
+});
+
+api.get('/seed', async (req, res, next) => {
+  const seedingUsers = [
+    {
+      name: 'Sleep',
+      email: 'sleep@test.me',
+      password: 'sleep123'
+    },
+    {
+      name: 'Dream',
+      email: 'dream@test.me',
+      password: 'dream123'
+    },
+    {
+      name: 'WakeUp',
+      email: 'wakeup@test.me',
+      password: 'wakeup123'
+    },
+    {
+      name: 'Create',
+      email: 'create@test.me',
+      password: 'create123'
+    }
+  ];
+
+  seedingUsers.map(user => {
+    new UsersList({
+      name: user.name,
+      email: user.email,
+      password: user.password
+    }).save((err, data) => {
+      if (err) {
+        return console.log(err);
+      }
+      console.log(`Data: ${data}`);
+    });
+  });
+
+  console.log(`Seed route called`);
+  res.send(`Seed route`);
+});
 
 const port = 3000;
 api.listen(port, () => console.log(`Listening on port ${port}`));
