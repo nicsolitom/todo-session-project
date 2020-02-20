@@ -39,6 +39,7 @@ api.get('/', (req, res, next) => {
 });
 
 api.get('/seed', async (req, res, next) => {
+  let userId = '';
   const seedingUsers = [
     {
       name: 'Sleepyhead',
@@ -62,29 +63,29 @@ api.get('/seed', async (req, res, next) => {
     }
   ];
 
-    const seedingTodos = [
-      {
-        title: 'Sleep',
-        description: 'Sleeping to recharge the body.',
-        status: true
-      },
-      {
-        title: 'Dream',
-        description: 'Dream for a balanced psyche.',
-        status: true
-      },
-      {
-        title: 'Dance to wake up.',
-        description: 'Soul needs dance!',
-        status: true
-      },
-      {
-        title: 'Create stuff',
-        description:
-          'Creation in inspirational flow. What is a life without creativity?!',
-        status: true
-      }
-    ];
+  const seedingTodos = [
+    {
+      title: 'Sleep',
+      description: 'Sleeping to recharge the body.',
+      status: true
+    },
+    {
+      title: 'Dream',
+      description: 'Dream for a balanced psyche.',
+      status: true
+    },
+    {
+      title: 'Dance to wake up.',
+      description: 'Soul needs dance!',
+      status: false
+    },
+    {
+      title: 'Create stuff',
+      description:
+        'Creation in inspirational flow. What is a life without creativity?!',
+      status: false
+    }
+  ];
 
   seedingUsers.map(user => {
     new UsersList({
@@ -95,8 +96,21 @@ api.get('/seed', async (req, res, next) => {
       if (err) {
         return console.log(err);
       }
-      console.log(`Data: ${data}`);
-
+      console.log(`Data: ${data._id}`);
+      userId = data._id;
+      seedingTodos.map(todo => {
+        new TodoList({
+          title: todo.title,
+          description: todo.description,
+          status: todo.status,
+          user: userId
+        }).save((err, data) => {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(`Todo: ${data}`);
+        });
+      });
     });
   });
 
