@@ -41,22 +41,22 @@ api.get('/', (req, res, next) => {
 api.get('/seed', async (req, res, next) => {
   const seedingUsers = [
     {
-      name: 'Sleep',
+      name: 'Sleepyhead',
       email: 'sleep@test.me',
       password: 'sleep123'
     },
     {
-      name: 'Dream',
+      name: 'Dreamer',
       email: 'dream@test.me',
       password: 'dream123'
     },
     {
-      name: 'WakeUp',
+      name: 'Awoken',
       email: 'wakeup@test.me',
       password: 'wakeup123'
     },
     {
-      name: 'Create',
+      name: 'Creator',
       email: 'create@test.me',
       password: 'create123'
     }
@@ -72,6 +72,7 @@ api.get('/seed', async (req, res, next) => {
         return console.log(err);
       }
       console.log(`Data: ${data}`);
+
     });
   });
 
