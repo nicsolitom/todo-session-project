@@ -5,14 +5,17 @@ mongoose.pluralize(null);
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
   email: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
   password: {
-    type: String
+    type: String,
+    required: true
   }
 });
 
