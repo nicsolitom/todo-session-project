@@ -62,6 +62,30 @@ api.get('/seed', async (req, res, next) => {
     }
   ];
 
+    const seedingTodos = [
+      {
+        title: 'Sleep',
+        description: 'Sleeping to recharge the body.',
+        status: true
+      },
+      {
+        title: 'Dream',
+        description: 'Dream for a balanced psyche.',
+        status: true
+      },
+      {
+        title: 'Dance to wake up.',
+        description: 'Soul needs dance!',
+        status: true
+      },
+      {
+        title: 'Create stuff',
+        description:
+          'Creation in inspirational flow. What is a life without creativity?!',
+        status: true
+      }
+    ];
+
   seedingUsers.map(user => {
     new UsersList({
       name: user.name,
