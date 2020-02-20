@@ -38,6 +38,7 @@ api.get('/', (req, res, next) => {
   res.send(`Home`);
 });
 
+//? Seed route. When accessed, 4 users with 4 todo's each are created in MongoDB Atlas:
 api.get('/seed', async (req, res, next) => {
   let userId = '';
   const seedingUsers = [
